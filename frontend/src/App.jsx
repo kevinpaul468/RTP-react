@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
+import Community from './components/Community';
+import QuestionDetail from './components/QuestionDetail';
 
 import NotFound from './components/NotFound';
 
@@ -13,9 +15,10 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path ="/community" element={<Community />} />
+                <Route path ="/questions/:id" element={<QuestionDetail />} />
                 {/* <Route path="/courses" element={<Courses />} />
                 <Route path ="/workshops" element={<Workshops />} />
-                <Route path ="/community" element={<Community />} />
                 <Route path="/profile" element={<Profile />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Routes>

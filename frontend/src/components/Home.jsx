@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const PersonalNav = (sessionUser) => {
+const PersonalNav = ({sessionUser}) => {
 
-    if (sessionUser) {
+    if (sessionUser !== null && sessionUser !== undefined && sessionUser !== '') {
         return (
             <>
                 <li className="nav-item"><a className="nav-link" href="/profile">Profile</a></li>
@@ -21,7 +21,7 @@ const PersonalNav = (sessionUser) => {
     }
 };
 
-const Nav = (sessionUser) => {
+const Nav = ({sessionUser}) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
     <ul className="navbar-nav">
@@ -79,12 +79,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-
-        
-
-
-
-        
