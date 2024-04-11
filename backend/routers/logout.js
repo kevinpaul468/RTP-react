@@ -2,11 +2,12 @@ const express = require('express')
 const router = express.Router()
 
 router.post('/api/logout',(req,res)=>{
-    res.session.destroy((err)=>{
+    console.log(req.session)
+    req.session.destroy((err)=>{
         if(err){
-            res.json({logout : true})
-        }else{
             res.json({logout : false})
+        }else{
+            res.json({logout : true})
         }
     }
 )}
