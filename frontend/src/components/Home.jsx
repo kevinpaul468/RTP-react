@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PersonalNav = ({sessionUser}) => {
+    console.log("sessionUser", sessionUser)
 
     if (sessionUser !== null && sessionUser !== undefined && sessionUser !== '') {
         return (
@@ -43,6 +44,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchSessionUser();
+        console.log("fetched")
     }, []);
 
     const fetchSessionUser = async () => {

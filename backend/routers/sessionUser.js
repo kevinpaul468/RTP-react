@@ -3,7 +3,7 @@ const router = express.Router()
 
 router.get('/api/getSessionUser', (req, res) => {
     console.log(req.session.user)
-    res.json({ session: req.session.user })
+    res.json({ user: req.session.user })
 })
 
 module.exports = router;
