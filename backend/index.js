@@ -8,6 +8,8 @@ const register = require('./routers/register')
 const login = require('./routers/login')
 const logout = require('./routers/logout')
 const cors = require('cors')
+const questions = require('./routers/community')
+
 app = express()
 
 app.use(bodyParser.json())
@@ -29,6 +31,7 @@ app.use(sessionUser);
 app.use(register);
 app.use(login);
 app.use(logout);
+app.use(questions)
 
 
 app.listen(port, () => {

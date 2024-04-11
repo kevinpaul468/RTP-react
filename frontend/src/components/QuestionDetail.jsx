@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const AnswerCard = ({ id, answer, author, date }) => {
     return (
@@ -15,22 +16,11 @@ const QuestionDetail = () => {
     const [question, setQuestion] = useState(null);
 
     useEffect(() => {
-        // Fetch the question details from your API using the ID from the URL
-        // For now, we'll use a dummy question
-        const fetchedQuestion = {
-            id: '123',
-            question: 'How to learn React?',
-            author: 'John Doe',
-            date: '2021-09-01',
-            tags: ['React', 'JavaScript'],
-            upvotes: 10,
-            views: 100,
-            answers: [
-                { answer: 'You can learn React from the official documentation.', author: 'Jane Doe', date: '2021-09-02' },
-                { answer: 'I recommend the React course on Codecademy.', author: 'John Smith', date: '2021-09-03' },
-            ],
-        };
-        setQuestion(fetchedQuestion);
+        const fetchData = async () => {
+        const fetchedQuestion = await axios.get(`/api/questions/${id}`, { id });
+        setQuestion(fetchedQuestion.data);
+        }
+        fetchData();
     }, [id]);
 
     if (!question) {
@@ -41,7 +31,7 @@ const QuestionDetail = () => {
         <div>
             <h2>{question.question}</h2>
             <p>Asked by {question.author} on {new Date(question.date).toLocaleDateString()}</p>
-            <div>
+            <div> 
                 {question.tags.map((tag, index) => (
                     <span key={index} style={{ marginRight: '5px', color: 'blue' }}>{tag}</span>
                 ))}

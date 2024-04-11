@@ -88,3 +88,12 @@ async function answerQuesion(id,answer,author){
     }
 }
 
+module.exports = {
+    addQuestion,
+    getQuestions,
+    getQuestionDetails,
+    upvoteQuestion,
+    removeUpvote,
+    viewQuestion,
+    answerQuesion
+}
