@@ -4,9 +4,9 @@ const router = express.Router()
 router.post('/api/logout',(req,res)=>{
     res.session.destroy((err)=>{
         if(err){
-            res.status(500).json({message:"Error in logout"})
+            res.json({logout : true})
         }else{
-            res.status(200).json({message:"Logout success"})
+            res.json({logout : false})
         }
     }
 )}

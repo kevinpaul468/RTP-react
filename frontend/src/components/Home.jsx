@@ -9,7 +9,7 @@ const PersonalNav = ({sessionUser}) => {
         return (
             <>
                 <li className="nav-item"><a className="nav-link" href="/profile">Profile</a></li>
-                <li className="nav-item"><a className="nav-link" href="/api/logout" >Logout</a></li>
+                <li className="nav-item"><a className="nav-link" href="/logout" >Logout</a></li>
             </>
         );
     } else {
