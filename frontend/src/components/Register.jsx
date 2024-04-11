@@ -1,7 +1,14 @@
 import axios from "axios"
-
+import {useEffect } from "react";
 const Register = () => {
-
+    useEffect(()=>{
+        axios.get('/api/getSessionUser')
+        .then(response => {
+            if(response.data.user !== null && response.data.user !== undefined && response.data.user !== ''){
+                window.location.href = '/'
+            }
+        })
+    },[])
     const register = async (event)=>{
         event.preventDefault()
         const name = document.getElementById('name').value
@@ -16,7 +23,6 @@ const Register = () => {
         }
         else{
             alert(response.data.msg)
-            console.log(response.data.msg)
         }
         
         };

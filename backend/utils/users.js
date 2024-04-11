@@ -6,8 +6,8 @@ const client = new MongoClient(databaseURL);
 
 async function emailExists(email) {
     await client.connect();
-    const db = await client.db(database);
-    const collection = await db.collection("user_details");
+    const db = client.db(database);
+    const collection = db.collection("user_details");
     const document = await collection.findOne({ email: email });
     if (document === null) {
         return false;
@@ -18,8 +18,8 @@ async function emailExists(email) {
 
 async function addEmail(name,email, password) {
     await client.connect();
-    const db = await client.db(database);
-    const collection = await db.collection("user_details");
+    const db = client.db(database);
+    const collection = db.collection("user_details");
     const document = await collection.insertOne({ name: name, email: email, password: password });
     console.log("inserted sucessfully");
     return;
@@ -28,8 +28,8 @@ async function addEmail(name,email, password) {
 
 async function verified(email, password) {
     await client.connect();
-    const db = await client.db(database);
-    const collection = await db.collection("user_details");
+    const db = client.db(database);
+    const collection = db.collection("user_details");
     const document = await collection.findOne({email: email});
     if(document.password === password){
         return true;
@@ -37,4 +37,11 @@ async function verified(email, password) {
     return false;
 }
 
-module.exports = { emailExists, addEmail, verified };
+async function userName(email){
+    await client.connect();
+    const db = client.db(database);
+    const collection = db.collection("user_details");
+    const document = await collection.findOne({email: email});
+    return document.name;
+}
+module.exports = { emailExists, addEmail, verified, userName};

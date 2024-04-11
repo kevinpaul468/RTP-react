@@ -8,7 +8,7 @@ const PersonalNav = ({sessionUser}) => {
         return (
             <>
                 <li className="nav-item"><a className="nav-link" href="/profile">Profile</a></li>
-                <li className="nav-item"><a className="nav-link" href="/logout">Logout</a></li>
+                <li className="nav-item"><a className="nav-link" href="/api/logout" >Logout</a></li>
             </>
         );
     } else {
@@ -49,7 +49,8 @@ const Home = () => {
         try {
             const response = await axios.get('/api/getSessionUser'); // Adjust the endpoint accordingly
             if (response.status === 200) {
-                setSessionUser(response.data.sessionUser);
+                setSessionUser(response.data.user);
+                console.log('Session user:', response.data.user)
             } else {
                 console.error('Failed to fetch session user');
             }
@@ -63,7 +64,7 @@ const Home = () => {
             <Nav sessionUser={sessionUser}/>
             {sessionUser ? (
                 <div className="container mt-5">
-                    <h1>Welcome, {sessionUser.name}</h1>
+                    <h1>Welcome, {sessionUser}</h1>
                     <p>Learn backend development with Node.js, Express, and MongoDB</p>
                 </div>
             ) : (
